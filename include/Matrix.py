@@ -34,3 +34,50 @@ class Matrix:
                 parts.append(str(element))
             lines.append("[" + ", ".join(parts) + "]")
         return "\n".join(lines)
+
+	# impl<K> Matrix::<K> {
+	#fn mul_vec::<K>(&mut self, vec: Vector::<K>) -> Vector::<K>;
+	#fn mul_mat::<K>(&mut self, mat: Matrix::<K>) -> Matrix::<K>;
+	#}
+    def mul_vec(self, v):
+        from Vector import Vector
+        res = []
+        for i in range(self.rows):
+            total = 0.0
+            for j in range(self.cols):
+                total += self.data[i][j] * v.data[j]
+            res.append(total)
+
+        return Vector(res)
+
+    def mul_mat(self, m):
+        res = []
+        for i in range(self.rows):
+            new_row = []
+            for j in range(m.cols):
+                total = 0.0
+                for k in range(self.cols):
+                    total += self.data[i][k] * m.data[k][j]
+                new_row.append(total)
+            res.append(new_row)
+        return Matrix(res)
+
+    def trace(self):
+        if self.rows != self.cols:
+            return "Trace is only defined for square matrices"
+
+        total = 0
+        for i in range(self.rows):
+            total += self.data[i][i]
+
+        return total
+
+    def transpose(self):
+        res = []
+        for j in range(self.cols):
+            new_row = []
+            for i in range(self.rows):
+                new_row.append(self.data[i][j])
+            res.append(new_row)
+
+        return Matrix(res)
