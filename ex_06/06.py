@@ -1,5 +1,3 @@
-# compute cos(u,v), the cosine of the angle between the two vectors uand v.
-
 import os
 import sys
 
