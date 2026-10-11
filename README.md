@@ -25,21 +25,6 @@ make clean
 
 Requires a C++17 compiler (g++ or clang++).
 
-## Usage
-
-```cpp
-#include "Matrix.hpp"
-
-int main() {
-    Matrix<float> A({{2., -2.}, {-2., 2.}});
-    Vector<float> v({4., 2.});
-    A.mul_vec(v).print();   // [4] [-4]
-
-    Matrix<float> B({{8., 5., -2.}, {4., 7., 20.}, {7., 6., 1.}});
-    std::cout << B.determinant() << std::endl;   // -174
-    B.inverse().print();
-}
-```
 
 ## Project structure
 
